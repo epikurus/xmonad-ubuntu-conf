@@ -24,6 +24,13 @@ xrdb -merge .Xresources
 xcompmgr -n &
 
 
+# VirtualBox guest
+if [ -f /usr/bin/VBoxClient-all ]
+    then
+        VBoxClient-all &
+fi
+
+
 #
 # SCREEN CONFIGURATION
 #
