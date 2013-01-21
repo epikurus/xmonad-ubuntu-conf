@@ -14,14 +14,25 @@
 # gtk-based applications
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
 # Load X resources (fixes some font issues)
 xrdb -merge .Xresources
 
+# Starts screensaver daemon 
+xscreensaver -no-splash &
+
+
 # Mouse cursor
-xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr &
 
 # Keyboard map
-setxkbmap es
+setxkbmap es &
 
 # VirtualBox guest
 if [ -f /usr/bin/VBoxClient-all ]

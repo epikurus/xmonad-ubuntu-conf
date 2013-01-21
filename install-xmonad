@@ -32,3 +32,4 @@ then
 fi
 ln -s ~/.xmonad/.gtkrc-2.0 ~/.gtkrc-2.0
 
+ln -s ~/.xmonad/start-xmonad ~/.xinitrc
