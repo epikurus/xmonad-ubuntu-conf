@@ -17,12 +17,11 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Load X resources (fixes some font issues)
 xrdb -merge .Xresources
 
-# Start compositing to support transparency. You can omit this
-# if you prefer not to use any transparency, but it is likely to cause
-# ugly black fringing with some programs such as synapse that expect
-# transparency support.
-xcompmgr -n &
+# Mouse cursor
+xsetroot -cursor_name left_ptr
 
+# Keyboard map
+setxkbmap es
 
 # VirtualBox guest
 if [ -f /usr/bin/VBoxClient-all ]
@@ -30,6 +29,11 @@ if [ -f /usr/bin/VBoxClient-all ]
         VBoxClient-all &
 fi
 
+# Start compositing to support transparency. You can omit this
+# if you prefer not to use any transparency, but it is likely to cause
+# ugly black fringing with some programs such as synapse that expect
+# transparency support.
+xcompmgr -n &
 
 #
 # SCREEN CONFIGURATION
