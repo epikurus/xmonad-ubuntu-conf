@@ -21,19 +21,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# Load X resources (fixes some font issues)
-xrdb -merge .Xresources
-
-# Starts screensaver daemon 
-xscreensaver -no-splash &
-
-
-# Mouse cursor
-xsetroot -cursor_name left_ptr &
-
-# Keyboard map
-setxkbmap es &
-
 # VirtualBox guest
 if [ -f /usr/bin/VBoxClient-all ]
 then
@@ -46,6 +33,22 @@ then
     vmware-user &
 fi
 
+
+
+# Load X resources (fixes some font issues)
+xrdb -merge .Xresources
+
+# Starts screensaver daemon 
+xscreensaver -no-splash &
+
+# Gnome Settings Daemon
+gnome-settings-daemon &
+
+# Mouse cursor
+xsetroot -cursor_name left_ptr &
+
+# Keyboard map
+setxkbmap es &
 
 # Start compositing to support transparency. You can omit this
 # if you prefer not to use any transparency, but it is likely to cause
@@ -120,14 +123,41 @@ stalonetray \
   --window-strut none \
 &
 
+#trayer \
+#    --edge top \
+#    --align right \
+#    --SetDockType true \
+#    --SetPartialStrut true \
+#    --expand true \
+#    --width 15 \
+#    --height 12 \
+#    --transparent true \
+#    --tint 0x000000 \
+#&
+
+
+
 # Run the gnome-keyring-daemon to avoid issues you otherwise may encounter
 # when using gnome applications which expect access to the keyring, such
 # as Empathy. This prevents prompts you may otherwise get for invalid
 # certificates and the like.
 gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 
+
+#if [ -x /usr/bin/gnome-power-manager ] ; then
+#   sleep 1
+#   gnome-power-manager
+#fi
+
+if [ -x /usr/bin/nm-applet ] ; then
+   nm-applet --sm-disable &
+fi
+
 # Clipboard Manager
 parcellite &
+
+# Unclutter - hide mouse pointer while typing
+unclutter &
 
 # Now, finally, start xmonad
 exec xmonad
