@@ -10,8 +10,6 @@
        get to a stable place again.
     4. Repeat
 
-  Author:     David Brewer
-  Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
 -}
 
 import XMonad
