@@ -2,14 +2,25 @@
 # 
 # xmonad startup script. Intended to be run from an xsession configuration
 # to run xmonad and some associated programs.
-# 
-# Author: David Brewer
-# Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
+
+#
+# Virtual Machine Setup
+#
+# VirtualBox guest
+if [ -f /usr/bin/VBoxClient-all ]
+then
+    VBoxClient-all &
+fi
+
+# VMware guest
+if [ -f /usr/bin/vmware-user ]
+then
+    vmware-user &
+fi
 
 #
 # GENERAL INITIALIZATION
 #
-
 # Identify the home of our gtkrc file, important for setting styles of 
 # gtk-based applications
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"

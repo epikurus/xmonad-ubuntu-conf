@@ -5,8 +5,6 @@
 # running any programs which you want to use within xmonad but
 # which don't need to be initialized before xmonad is running. 
 #
-# Author: David Brewer
-# Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
 
 #
 # TRAY ICON SOFTWARE
