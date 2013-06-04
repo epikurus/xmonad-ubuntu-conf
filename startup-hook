@@ -11,9 +11,15 @@
 #
 
 # Empathy chat client (-h: start hidden, -n: don't connect on launch)
-if [ -z "$(pgrep empathy)" ] ; then
-    empathy -h -n &
-fi
+#if [ -z "$(pgrep empathy)" ] ; then
+#    empathy -h -n &
+#fi
+
+# Pidgin chat client (-h: start hidden, -n: don't connect on launch)
+#if [ -z "$(pgrep pidgin)" ] ; then
+#    pidgin &
+#fi
+
 
 # Remmina remote desktop connection client (-i: start hidden)
 if [ -z "$(pgrep remmina)" ] ; then
@@ -42,10 +48,9 @@ fi
 # On login, we unlock the ssh keychain so we're not prompted for 
 # passphrases later. We pipe /dev/null to ssh-add to make it realize 
 # it's not running in a terminal. Otherwise, it won't launch the prompt.
-# 
+ 
 # If you don't use the ssh keychain you may not want this. Commented
 # by default as it is assumed many users will not want this feature.
-
 # export SSH_ASKPASS="/usr/bin/ssh-askpass"
 # cat /dev/null | ssh-add &
 

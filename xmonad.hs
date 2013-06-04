@@ -31,18 +31,22 @@ import XMonad.Hooks.UrgencyHook
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.Ratio ((%))
+import Solarized -- solarized color scheme
 
 {-
   Xmonad configuration variables. These settings control some of the
   simpler parts of xmonad's behavior and are straightforward to tweak.
 -}
 
-myModMask            = mod4Mask       -- changes the mod key to "super"
-myFocusedBorderColor = "#ff0000"      -- color of focused border
-myNormalBorderColor  = "#cccccc"      -- color of inactive border
-myBorderWidth        = 1              -- width of border around windows
-myTerminal           = "terminator"   -- which terminal software to use
-myIMRosterTitle      = "Contact List" -- title of roster on IM workspace
+myModMask            = mod4Mask        -- changes the mod key to "super"
+{-myFocusedBorderColor = "#ff0000"     -- color of focused border-}
+{-myNormalBorderColor  = "#cccccc"     -- color of inactive border-}
+myFocusedBorderColor = solarizedBase01 -- color of focused border
+myNormalBorderColor  = solarizedRed    -- color of inactive border
+myBorderWidth        = 1               -- width of border around windows
+{-myTerminal           = "urxvtc"    -- which terminal software to use-}
+myTerminal           = "terminator"    -- which terminal software to use
+myIMRosterTitle      = "Contact List"  -- title of roster on IM workspace
 
 
 {-

@@ -6,14 +6,12 @@
 -- 
 -- There's a lot you can do here. Refer to "man xmobar". 
 -- 
--- Author: David Brewer
--- Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
 
 
 Config { 
   -- Set font and default foreground/background colors. Note that
   -- the height of xmobar is controlled by the font you use.
-  font = "xft:Ubuntu Mono-12",
+  font = "xft:Inconsolata:size=10:antialias=true"
   bgColor = "black",
   fgColor = "grey",
 
@@ -38,6 +36,12 @@ Config {
     Run Memory [
       "-t","Mem: <usedratio>%"
     ] 10,
+
+
+    -- Network information
+    Run Network "eth0" [
+      "-t","Net: rx <rx>, tx <tx>","-H","200","-L","10","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"
+     ] 10,
 
     -- Date formatting
     Run Date "%a %b %_d %l:%M" "date" 10,
@@ -75,5 +79,5 @@ Config {
    -- Overall template for the layout of the xmobar contents. Note that
    -- space is significant and can be used to add padding.
    -- template = "%StdinReader% }{ %battery% | %cpu% | %memory% | Vol: %myvolume%    <fc=#e6744c>%date%</fc>     "
-   template = "%StdinReader% }{ %cpu% | %memory% | <fc=#e6744c>%date%</fc>          "
+   template = "%StdinReader% }{ %cpu% | %memory% | %eth0% | <fc=#e6744c>%date%</fc>    "
 }

@@ -32,25 +32,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# VirtualBox guest
-if [ -f /usr/bin/VBoxClient-all ]
-then
-    VBoxClient-all &
-fi
-
-# VMware guest
-if [ -f /usr/bin/vmware-user ]
-then
-    vmware-user &
-fi
-
-
-
 # Load X resources (fixes some font issues)
 xrdb -merge .Xresources
 
 # Starts screensaver daemon 
-xscreensaver -no-splash &
+# xscreensaver -no-splash &
 
 # Gnome Settings Daemon
 gnome-settings-daemon &
@@ -59,7 +45,7 @@ gnome-settings-daemon &
 xsetroot -cursor_name left_ptr &
 
 # Keyboard map
-setxkbmap es &
+setxkbmap -layout es &
 
 # Start compositing to support transparency. You can omit this
 # if you prefer not to use any transparency, but it is likely to cause
@@ -124,6 +110,7 @@ nitrogen --restore &
 #   other words, trust xmonad to handle this part.
 #
 stalonetray \
+  --transparent \
   --icon-gravity E \
   --geometry 5x1-0+0 \
   --max-geometry 5x1-0+0 \
@@ -168,7 +155,24 @@ fi
 parcellite &
 
 # Unclutter - hide mouse pointer while typing
-unclutter &
+# conflicts with xmonads change window shortcut
+# unclutter &
+
+
+# Thunar (daemon mode)
+# Thunar may be run in daemon mode. This has several advantages,
+# including a faster startup for Thunar, as well as Thunar running
+# in the background and only opening a window when necessary 
+# (for instance, when a flash drive is inserted)
+thunar --daemon &
+
+
+
+# urxvt daemon mode
+# http://kmandla.wordpress.com/2009/08/25/reducing-memory-use-with-urxvtd-and-urxvtc/
+#urxvtd -q -o -f
+
+
 
 # Now, finally, start xmonad
 exec xmonad
