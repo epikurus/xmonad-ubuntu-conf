@@ -13,17 +13,14 @@
 #
 # Please review the readme file to find out exactly what it does and does not 
 # do. Or, visit the repository for more information: 
-# https://github.com/davidbrewer/xmonad-ubuntu-conf
-# 
-# Author: David Brewer
 
 echo "Installing required packages..."
-sudo apt-get install xmonad libghc-xmonad-dev libghc-xmonad-contrib-dev xmobar xcompmgr nitrogen stalonetray moreutils synapse ssh-askpass-gnome thunar terminator remmina
+sshpass -p vagrant sudo apt-get install xmonad libghc-xmonad-dev libghc-xmonad-contrib-dev xmobar xcompmgr nitrogen stalonetray moreutils synapse ssh-askpass-gnome thunar terminator remmina
 
 echo "Creating xmonad xsession configuration..."
-sudo mv /usr/share/xsessions/xmonad.desktop /usr/share/xsessions/xmonad.desktop.original
-sudo cp ~/.xmonad/xmonad.desktop /usr/share/xsessions
-sudo cp ~/.xmonad/images/custom_xmonad_badge.png /usr/share/unity-greeter
+sshpass -p vagrant sudo mv /usr/share/xsessions/xmonad.desktop /usr/share/xsessions/xmonad.desktop.original
+sshpass -p vagrant sudo cp ~/.xmonad/xmonad.desktop /usr/share/xsessions
+sshpass -p vagrant sudo cp ~/.xmonad/images/custom_xmonad_badge.png /usr/share/unity-greeter
 
 echo "Linking to customized gnome 2 configuration..."
 if [ -f ~/.gtkrc-2.0 ]
